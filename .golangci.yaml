@@ -55,7 +55,7 @@ issues:
 # Linter 规则配置
 linters-settings:
   lll:
-    # 单行最大长度 120
+    # 单行最大长度 180
     line-length: 180
   # 静态代码检查，包含大量规则，
   staticcheck:
