@@ -13,11 +13,11 @@ type jsonLogger struct {
 	opts Options
 }
 
-// NewjsonLoggerger returns a Logger that encodes keyvals to the Writer as a
+// NewJSONLogger returns a Logger that encodes key and val to the Writer as a
 // single JSON object. Each log event produces no more than one call to
 // w.Write. The passed Writer must be safe for concurrent use by multiple
 // goroutines if the returned Logger will be used concurrently.
-func NewJsonLogger(opts ...Option) Logger {
+func NewJSONLogger(opts ...Option) Logger {
 	// Default options
 	options := Options{
 		Level:           LevelInfo,
@@ -65,7 +65,7 @@ func (l *jsonLogger) Log(level Level, kvs ...interface{}) {
 
 	enc := json.NewEncoder(l.opts.Out)
 	enc.SetEscapeHTML(false)
-	enc.Encode(m)
+	_ = enc.Encode(m)
 }
 
 func Merge(dst map[string]interface{}, k, v interface{}) {

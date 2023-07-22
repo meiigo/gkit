@@ -40,7 +40,7 @@ func (h *Helper) Error(a ...interface{}) {
 }
 
 func (h *Helper) Errorf(format string, a ...interface{}) {
-	h.Logger.Fields(h.fields).Log(LevelDebug, "msg", fmt.Sprint(a...))
+	h.Logger.Fields(h.fields).Log(LevelDebug, "msg", fmt.Sprintf(format, a...))
 }
 
 func (h *Helper) Errorw(kv ...interface{}) {
@@ -52,7 +52,7 @@ func (h *Helper) Fatal(a ...interface{}) {
 }
 
 func (h *Helper) Fatalf(format string, a ...interface{}) {
-	h.Logger.Fields(h.fields).Log(LevelFatal, "msg", fmt.Sprint(a...))
+	h.Logger.Fields(h.fields).Log(LevelFatal, "msg", fmt.Sprintf(format, a...))
 }
 
 func (h *Helper) Fatalw(kv ...interface{}) {
