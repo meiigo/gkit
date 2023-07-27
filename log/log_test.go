@@ -24,7 +24,7 @@ func TestLogger(t *testing.T) {
 
 	// json log
 	fmt.Println("json log...")
-	jl := log.NewJsonLogger(log.WithLevel(log.LevelInfo), log.WithOutput(os.Stdout))
+	jl := log.NewJSONLogger(log.WithLevel(log.LevelInfo), log.WithOutput(os.Stdout))
 	jl.Log(log.LevelDebug, "msg", "this is a msg")
 	jl.Log(log.LevelInfo, "msg", "this is a msg")
 
