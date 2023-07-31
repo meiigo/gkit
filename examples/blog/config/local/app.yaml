@@ -1,0 +1,9 @@
+app:
+  http:
+    port: 8080
+  grpc:
+    port: 9090
+  monitor:
+    enabled: true
+    port: 16060
+  log_level: "debug"

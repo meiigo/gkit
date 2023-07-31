@@ -1,0 +1,7 @@
+redis:
+  blog:
+    addr: 127.0.0.1:6379
+    db: 0
+  cache:
+    addr: 127.0.0.1:6379
+    db: 1

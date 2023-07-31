@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package blog.api;
+
+option go_package = "github.com/meiigo/gkit/examples/blog/api;api";
+
+service Blog {
+  rpc CreateArticle (CreateArticleRequest) returns (CreateArticleReply){}
+  rpc GetArticle (GetArticleRequest) returns (GetArticleReply) {}
+}
+
+message Article {
+  int64 id = 1;
+  string title = 2;
+  string content = 3;
+  int64 like = 4;
+}
+
+message CreateArticleRequest {
+  string title = 1;
+  string content = 2;
+}
+
+message CreateArticleReply {
+  Article Article = 1;
+}
+
+message GetArticleRequest {
+  int64 id = 1;
+}
+
+message GetArticleReply {
+  Article Article = 1;
+}
