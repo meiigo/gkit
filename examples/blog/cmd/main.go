@@ -5,6 +5,7 @@ import (
 
 	"github.com/meiigo/gkit/app"
 	"github.com/meiigo/gkit/examples/blog/internal/config"
+	"github.com/meiigo/gkit/examples/blog/internal/server/grpc"
 	"github.com/meiigo/gkit/examples/blog/internal/server/http"
 	"github.com/meiigo/gkit/examples/blog/internal/service"
 	"github.com/meiigo/gkit/log"
@@ -33,14 +34,16 @@ func main() {
 		panic(err)
 	}
 
-	blogSrv := service.NewBlogService(nil, nil)
+	blogSrv := service.NewBlogService(nil, log.DefaultLogger)
+
 	httpSrv := http.NewServer(config.GetHttpConfig(), blogSrv)
+	grpcSrv := grpc.NewServer(config.GetGRPCConfig(), blogSrv)
 
 	a := app.New(
 		app.ID("app-server"),
 		app.Name("ab-server"),
 		app.Version("v1.0.0"),
-		app.Server(httpSrv),
+		app.Server(httpSrv, grpcSrv),
 		app.Monitor(config.GetMonitorConfig()),
 	)
 

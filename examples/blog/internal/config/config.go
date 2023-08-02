@@ -58,6 +58,15 @@ func GetHttpConfig() *app.HTTPServer {
 	return conf.App.HTTP
 }
 
+func GetGRPCConfig() *app.GRPCServer {
+	if conf.App.GRPC == nil {
+		return &app.GRPCServer{
+			Port: 9090,
+		}
+	}
+	return conf.App.GRPC
+}
+
 func GetMonitorConfig() *monitor.Config {
 	return conf.App.Monitor
 }

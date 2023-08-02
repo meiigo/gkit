@@ -9,7 +9,7 @@ import (
 	"google.golang.org/grpc"
 )
 
-func NewGRPCServer(c *app.GRPCServer, s api.BlogServer) *tg.Server {
+func NewServer(c *app.GRPCServer, s api.BlogServer) *tg.Server {
 	opts := []tg.ServerOption{
 		tg.UnaryInterceptor([]grpc.UnaryServerInterceptor{
 			//grpc_prometheus.UnaryServerInterceptor,

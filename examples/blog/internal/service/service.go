@@ -29,3 +29,19 @@ func (s *BlogService) CreateArticle(ctx context.Context, req *api.CreateArticleR
 	//})
 	return &api.CreateArticleReply{}, nil
 }
+
+func (s *BlogService) GetArticle(ctx context.Context, req *api.GetArticleRequest) (*api.GetArticleReply, error) {
+	s.log.Infof("input data %v", req)
+	//err := s.article.Create(ctx, &biz.Article{
+	//	Title:   req.Title,
+	//	Content: req.Content,
+	//})
+	return &api.GetArticleReply{
+		Article: &api.Article{
+			Id:      1,
+			Title:   "",
+			Content: "",
+			Like:    999,
+		},
+	}, nil
+}
