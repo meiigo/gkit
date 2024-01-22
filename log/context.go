@@ -4,9 +4,12 @@ import "context"
 
 type loggerKey struct{}
 
-func FromContext(ctx context.Context) (Logger, bool) {
+func FromContext(ctx context.Context) Logger {
 	l, ok := ctx.Value(loggerKey{}).(Logger)
-	return l, ok
+	if ok {
+		return l
+	}
+	return DefaultLogger
 }
 
 func NewContext(ctx context.Context, l Logger) context.Context {
